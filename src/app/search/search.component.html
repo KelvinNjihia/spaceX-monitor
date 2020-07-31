@@ -1,0 +1,56 @@
+
+<!-- search -->
+<!-- <input type="text" [(ngModel)]="search" id="search" placeholder="Search Mission Launch" autocomplete="off"> -->
+
+<div class="section example-container" style="margin-bottom: 50px;" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="space-between center">
+<mat-form-field appearance="fill" class="search--input">
+  <mat-label>Search...</mat-label>
+  <input matInput [(ngModel)]="search" id="search" placeholder="Search Mission Launch" autocomplete="off">
+</mat-form-field>
+</div>
+
+<div *ngIf="search !== ''; else startSearch">
+
+  <div class="section" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="space-between center">
+    <h2 style="margin-top: 20px;">I founds these matches...</h2>
+  </div>
+  <div class="section" style="margin-bottom: 50px;" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="space-between center">
+    <div fxFlex="46.5%" *ngFor="let all of allLaunches | filterBy: ['name', 'flight_number', 'details']: search | orderBy: '-flight_number'">
+      <mat-card class="example-card" fxFlex="100" class="infor--card">
+        <mat-card-header>
+            <div mat-card-avatar  *ngIf="all?.links?.patch?.small !== null" [style.backgroundImage]="'url('+all?.links?.patch?.small+')'" class="example-header-image">
+            </div>
+          <mat-card-title>{{all?.name}}</mat-card-title>
+          <mat-card-subtitle>{{all?.date_utc | date: 'mediumDate'}}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <p>
+            {{all?.details}}
+          </p>
+        <h2 style="font-weight: 400; text-decoration: underline;">Rocket Info</h2>
+          <div *ngFor="let rocket of rockets">
+              <p *ngIf="all?.rocket == rocket?.id">Name: {{rocket?.name}}</p>
+              <p *ngIf="all?.rocket == rocket?.id">Type: {{rocket?.type}}</p>
+              <p *ngIf="all?.rocket == rocket?.id">Country: {{rocket?.country}}</p>
+              <p *ngIf="all?.rocket == rocket?.id">Company: {{rocket?.company}}</p>
+          </div>
+          <hr>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button *ngIf="all?.success !== null">{{all?.success == true ? 'SUCCESS' : 'FAILED'}}</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+</div>
+<div class="section example-container" style="margin-bottom: 50px;" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="space-between center">
+<ng-template #startSearch>
+  <p class="section" style="font-style: italic">
+    Search past and Future Missions and Launches by typing anything above...
+  </p>
+</ng-template>
+
+Go back <a style="text-align: left;" routerLink="">Home</a>
+</div>

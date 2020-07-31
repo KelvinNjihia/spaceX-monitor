@@ -1,0 +1,13 @@
+<mat-toolbar fxLayout="row" color="primary">
+  <span [routerLink]="''">
+    <mat-icon>🚀</mat-icon> SpaceX Launches Monitor
+  </span>
+  <span class="example-spacer"></span>
+  <button mat-button fxShow [routerLink]="'search'">
+    <mat-icon class="mr">search</mat-icon>
+    Search
+  </button>
+</mat-toolbar>
+
+
+<router-outlet></router-outlet>
