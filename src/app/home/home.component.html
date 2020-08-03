@@ -10,7 +10,6 @@
       <mat-card-header>
           <div mat-card-avatar  *ngIf="nextLaunch?.links?.patch?.small !== null" [style.backgroundImage]="'url('+nextLaunch?.links?.patch?.small+')'" class="example-header-image">
           </div>
-          <!-- <div mat-card-avatar #ava class="example-header-image" [style.backgroundImage]="'url(../assets/no-patch.png)'"></div> -->
         <mat-card-title>{{nextLaunch?.name}}</mat-card-title>
         <mat-card-subtitle>{{nextLaunch?.date_utc | date: 'mediumDate'}}</mat-card-subtitle>
       </mat-card-header>
