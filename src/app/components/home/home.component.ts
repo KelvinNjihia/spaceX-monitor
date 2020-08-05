@@ -1,9 +1,9 @@
 import { Observable } from 'rxjs';
-import { FutureLaunch } from './../models/future-lauch.model';
-import { PastLaunches } from './../models/past-launches.model';
-import { Rocket } from './../models/rocket.model';
-import { SpacexNext } from '../models/spacex-next.model';
-import { SpacexService } from './../services/spacex.service';
+import { FutureLaunch } from './../../models/future-lauch.model';
+import { PastLaunches } from './../../models/past-launches.model';
+import { Rocket } from './../../models/rocket.model';
+import { SpacexNext } from '../../models/spacex-next.model';
+import { SpacexService } from './../../services/spacex.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

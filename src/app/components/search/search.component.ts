@@ -1,7 +1,7 @@
-import { SpacexService } from './../services/spacex.service';
-import { AllLaunches } from './../models/all-launches.model';
+import { SpacexService } from './../../services/spacex.service';
+import { AllLaunches } from './../../models/all-launches.model';
 import { Component, OnInit } from '@angular/core';
-import { Rocket } from '../models/rocket.model';
+import { Rocket } from '../../models/rocket.model';
 
 @Component({
   selector: 'app-search',
