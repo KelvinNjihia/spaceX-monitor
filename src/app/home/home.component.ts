@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { FutureLaunch } from './../models/future-lauch.model';
 import { PastLaunches } from './../models/past-launches.model';
 import { Rocket } from './../models/rocket.model';
@@ -13,9 +14,10 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   nextLaunch: SpacexNext;
-  rockets: Rocket;
-  pastLaunches: PastLaunches;
-  futureLaunches: FutureLaunch;
+  rockets$: Observable<Rocket>;
+  pastLaunches$: Observable<PastLaunches>;
+  futureLaunch$: Observable<FutureLaunch>;
+
   panelOpenState: true;
 
   search = '';
@@ -28,15 +30,25 @@ export class HomeComponent implements OnInit {
     this.spacexService.getNextLaunch().subscribe(data => {
       this.nextLaunch = data;
     });
-    this.spacexService.getAllRockets().subscribe(data => {
-      this.rockets = data;
-    });
-    this.spacexService.getPastLaunches().subscribe(data => {
-      this.pastLaunches = data;
-    });
-    this.spacexService.getFutureLaunches().subscribe(data => {
-      this.futureLaunches = data;
-    });
+    // invoke rockets methods
+    this.getRockets();
+
+    // invoke past launches method with async
+    this.showPastaunches();
+
+    // invoke methd with async
+    this.showFutureLaunches();
   }
 
+  showFutureLaunches(): void {
+    this.futureLaunch$ = this.spacexService.getFutureLaunches();
+  }
+
+  showPastaunches(): void {
+    this.pastLaunches$ = this.spacexService.getPastLaunches();
+  }
+
+  getRockets(): void {
+    this.rockets$ = this.spacexService.getAllRockets();
+  }
 }
