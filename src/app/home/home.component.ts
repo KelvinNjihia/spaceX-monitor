@@ -4,7 +4,6 @@ import { Rocket } from './../models/rocket.model';
 import { SpacexNext } from '../models/spacex-next.model';
 import { SpacexService } from './../services/spacex.service';
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -19,11 +18,10 @@ export class HomeComponent implements OnInit {
   futureLaunches: FutureLaunch;
   panelOpenState: true;
 
-  search: string = '';
+  search = '';
 
   constructor(
-    private spacexService: SpacexService,
-    private sanitizer: DomSanitizer
+    private spacexService: SpacexService
     ) { }
 
   ngOnInit(): void {
@@ -41,7 +39,4 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  sanitizeImageUrl(imageUrl: string): SafeUrl {
-    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
-}
 }
