@@ -1,13 +1,19 @@
-<mat-toolbar fxLayout="row" color="primary">
+<mat-toolbar fxLayout="row" class="toolbar" [ngClass]="{'opaque': isOnTop, 'text-only': !isOnTop}">
   <span [routerLink]="''">
     <mat-icon>🚀</mat-icon> SpaceX Launches Monitor
   </span>
   <span class="example-spacer"></span>
-  <button mat-button fxShow [routerLink]="'search'">
-    <mat-icon class="mr">search</mat-icon>
-    Search
-  </button>
+  <div fxShow class="toobar__items">
+    <a mat-button [routerLink]="">
+      Past Launches
+    </a>
+
+    <a mat-button [routerLink]="'search'" title="Search...">
+      <mat-icon class="mr">search</mat-icon>
+    </a>
+  </div>
 </mat-toolbar>
 
-
-<router-outlet></router-outlet>
+<div  class="scroll-wrapper" cdkScrollable>
+  <router-outlet></router-outlet>
+</div>

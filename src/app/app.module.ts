@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {NgPipesModule} from 'ngx-pipes';
 import { FormsModule } from '@angular/forms';
+import { ScrollingModule, ScrollDispatcher, CdkScrollableModule } from '@angular/cdk/scrolling';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,9 +27,11 @@ import { SearchComponent } from './components/search/search.component';
     MaterialModule,
     HttpClientModule,
     NgPipesModule,
-    FormsModule
+    FormsModule,
+    CdkScrollableModule,
+    ScrollingModule
   ],
-  providers: [],
+  providers: [ScrollDispatcher],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

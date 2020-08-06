@@ -1,8 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-image: url('../src/assets/photo-1539321908154-04927596764d.jpeg');
-  color: white; }
+html, body, app-root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image: url('../src/assets/photo-1541185934-01b600ea069c.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  color: white;
+  overflow: auto;
+}
 
   // Image credit to https://unsplash.com/photos/M_EgSITHrKA
+
+  .scroll-wrapper {
+    overflow: auto;
+    max-height: 100vh;
+  }
