@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.scrollDispatcher.scrolled().subscribe((event: CdkScrollable) => {
       const scroll = event?.measureScrollOffset('top');
-      console.log(scroll);
       let newisOnTop = this.isOnTop;
 
       if (scroll > 80) {
