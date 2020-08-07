@@ -1,9 +1,9 @@
 <mat-toolbar fxLayout="row" class="toolbar" [ngClass]="{'opaque': isOnTop, 'text-only': !isOnTop}">
   <span [routerLink]="''">
-    <mat-icon>🚀</mat-icon> SpaceX Launches Monitor
+    🚀 SpaceX Monitor
   </span>
   <span class="example-spacer"></span>
-  <div fxShow class="toobar__items">
+  <div fxShow class="toobar__items" fxShow.lt-md="false">
     <a mat-button [routerLink]="''">
       Past Launches
     </a>
@@ -12,4 +12,23 @@
       <mat-icon class="mr">search</mat-icon>
     </a>
   </div>
+  <ng-container>
+    <button class="drop-button" mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide.gt-sm>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #dropMenu="matMenu" class="drop--menu" style="background-color: transparent;">
+      <mat-toolbar class="drop--toolbar--items">
+        <a mat-button [routerLink]="''">
+          Past Launches
+        </a>
+        <span class="example-spacer"></span>
+      </mat-toolbar>
+      <mat-toolbar class="drop--toolbar--items">
+        <a mat-button [routerLink]="'search'" title="Search...">
+          Search
+        </a>
+        <span class="example-spacer"></span>
+      </mat-toolbar>
+    </mat-menu>
+  </ng-container>
 </mat-toolbar>
