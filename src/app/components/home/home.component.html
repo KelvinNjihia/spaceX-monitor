@@ -1,6 +1,6 @@
 
 <!-- Up Next... -->
-<div class="section" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="space-between center">
+<!-- <div class="section" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="space-between center">
 
   <h2 style="margin-top: 20px; margin-bottom: 40px;">Up Next...</h2>
 </div>
@@ -29,6 +29,39 @@
       </mat-card-content>
     </mat-card>
   </div>
+</div> -->
+
+
+<!-- Up Next... -->
+<div class="section" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="space-between center">
+
+  <h2 style="margin-top: 20px; margin-bottom: 40px;">Up Next...</h2>
+</div>
+<div class="section"  style="margin-bottom: 40px;" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="space-between center">
+  <div fxFlex="100%">
+    <mat-card class="example-card" fxFlex="100" class="infor--card">
+      <mat-card-header>
+          <!-- <div mat-card-avatar  *ngIf="nextLaunch?.links?.patch?.small !== null" [style.backgroundImage]="'url('+nextLaunch?.links?.patch?.small+')'" class="example-header-image">
+          </div> -->
+        <mat-card-title>{{(nextLaunch$ | async)?.name }}</mat-card-title>
+        <mat-card-subtitle>{{(nextLaunch$ | async)?.date_utc | date: 'mediumDate'}}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>
+          {{(nextLaunch$ | async)?.details}}
+        </p>
+      <h2 style="font-weight: 400; text-decoration: underline;">Rocket Info</h2>
+        <div *ngFor="let rocket of rockets$ | async">
+            <p *ngIf="(nextLaunch$ | async)?.rocket == rocket?.id">Name: {{rocket?.name}}</p>
+            <p *ngIf="(nextLaunch$ | async)?.rocket == rocket?.id">Type: {{rocket?.type}}</p>
+            <p *ngIf="(nextLaunch$ | async)?.rocket == rocket?.id">Country: {{rocket?.country}}</p>
+            <p *ngIf="(nextLaunch$ | async)?.rocket == rocket?.id">Company: {{rocket?.company}}</p>
+        </div>
+        <hr>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
 
 <!-- Future missions -->
@@ -41,7 +74,7 @@
   <mat-expansion-panel hideToggle fxFlex.xs="100%">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        {{future?.name}}
+        {{future?.name}} - {{future?.flight_number}}
       </mat-panel-title>
       <mat-panel-description>
         {{future?.date | date: "MMM, yyyy"}}
