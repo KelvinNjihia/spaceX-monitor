@@ -13,7 +13,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  nextLaunch: SpacexNext;
   nextLaunch$: Observable<SpacexNext>;
   rockets$: Observable<Rocket>;
   pastLaunches$: Observable<PastLaunches>;
@@ -28,9 +27,6 @@ export class HomeComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    // this.spacexService.getNextLaunch().subscribe(data => {
-    //   this.nextLaunch = data;
-    // });
     this.nextLaunch$ = this.spacexService.getNextLaunch();
     // invoke rockets methods
     this.getRockets();
