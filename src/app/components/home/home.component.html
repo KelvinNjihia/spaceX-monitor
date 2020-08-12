@@ -1,4 +1,3 @@
-
 <!-- Up Next... -->
 <!-- <div class="section" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="space-between center">
 
@@ -37,16 +36,14 @@
 
   <h2 style="margin-top: 20px; margin-bottom: 40px;">Up Next...</h2>
 </div>
-<div class="section"  style="margin-bottom: 40px;" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="space-between center">
+<div class="section" style="margin-bottom: 40px;" fxLayout="row wrap" fxLayout.lt-md="column"
+  fxLayoutAlign="space-between center">
   <div fxFlex="100%">
     <mat-card class="example-card" fxFlex="100" class="infor--card">
       <mat-card-header>
-          <!-- <div mat-card-avatar *ngIf="(nextLaunch$ | async)?.links?.patch?.small !== null" [style.backgroundImage]="'url('+(nextLaunch$ | async)?.links?.patch?.small+')'" class="example-header-image"> -->
-            <!-- <div mat-card-avatar *ngIf="(nextLaunch$ | async)?.links?.patch?.small !== null" [ngStyle]="{'background-image':'url('+(nextLaunch$ | async)?.links?.patch?.small+')'}" class="example-header-image"> -->
-            <!-- [style.backgroundImage]="'url('+(nextLaunch$ | async)?.links?.patch?.small+')'" -->
-            <img mat-card-avatar *ngIf="(nextLaunch$ | async)?.links?.patch?.small !== null" src="{{(nextLaunch$ | async)?.links?.patch?.small}}"  class="example-header-image"/>
-          <!-- </div> -->
-
+        <div mat-card-avatar *ngIf="this.smallPatchUrl" [style.backgroundImage]="'url('+this.smallPatchUrl+')'"
+          class="example-header-image">
+        </div>
         <mat-card-title>{{(nextLaunch$ | async)?.name }}</mat-card-title>
         <mat-card-subtitle>{{(nextLaunch$ | async)?.date_utc | date: 'mediumDate'}}</mat-card-subtitle>
       </mat-card-header>
@@ -55,12 +52,12 @@
         <p>
           {{(nextLaunch$ | async)?.details}}
         </p>
-      <h2 style="font-weight: 400; text-decoration: underline;">Rocket Info</h2>
+        <h2 style="font-weight: 400; text-decoration: underline;">Rocket Info</h2>
         <div *ngFor="let rocket of rockets$ | async">
-            <p *ngIf="(nextLaunch$ | async)?.rocket == rocket?.id">Name: {{rocket?.name}}</p>
-            <p *ngIf="(nextLaunch$ | async)?.rocket == rocket?.id">Type: {{rocket?.type}}</p>
-            <p *ngIf="(nextLaunch$ | async)?.rocket == rocket?.id">Country: {{rocket?.country}}</p>
-            <p *ngIf="(nextLaunch$ | async)?.rocket == rocket?.id">Company: {{rocket?.company}}</p>
+          <p *ngIf="(nextLaunch$ | async)?.rocket == rocket?.id">Name: {{rocket?.name}}</p>
+          <p *ngIf="(nextLaunch$ | async)?.rocket == rocket?.id">Type: {{rocket?.type}}</p>
+          <p *ngIf="(nextLaunch$ | async)?.rocket == rocket?.id">Country: {{rocket?.country}}</p>
+          <p *ngIf="(nextLaunch$ | async)?.rocket == rocket?.id">Company: {{rocket?.company}}</p>
         </div>
         <hr>
       </mat-card-content>
@@ -73,28 +70,28 @@
   <h2>Future Launches and Missions</h2>
 </div>
 <div class="section" fxLayout="row wrap" fxLayout.lt-md="column" fxLayoutAlign="space-between center">
- <div fxFlex="46.5%" *ngFor="let future of futureLaunch$ | async ">
-<mat-accordion>
-  <mat-expansion-panel hideToggle fxFlex.xs="100%">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{future?.name}} - {{future?.flight_number}}
-      </mat-panel-title>
-      <mat-panel-description>
-        {{future?.date | date: "MMM, yyyy"}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <p>{{future?.details}}</p>
-    <h2 style="font-weight: 400; text-decoration: underline;">Rocket Info</h2>
+  <div fxFlex="46.5%" *ngFor="let future of futureLaunch$ | async ">
+    <mat-accordion>
+      <mat-expansion-panel hideToggle fxFlex.xs="100%">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{future?.name}} - {{future?.flight_number}}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{future?.date | date: "MMM, yyyy"}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>{{future?.details}}</p>
+        <h2 style="font-weight: 400; text-decoration: underline;">Rocket Info</h2>
         <div *ngFor="let rocket of rockets$ | async">
-            <p *ngIf="future?.rocket == rocket?.id">Name: {{rocket?.name}}</p>
-            <p *ngIf="future?.rocket == rocket?.id">Type: {{rocket?.type}}</p>
-            <p *ngIf="future?.rocket == rocket?.id">Country: {{rocket?.country}}</p>
-            <p *ngIf="future?.rocket == rocket?.id">Company: {{rocket?.company}}</p>
+          <p *ngIf="future?.rocket == rocket?.id">Name: {{rocket?.name}}</p>
+          <p *ngIf="future?.rocket == rocket?.id">Type: {{rocket?.type}}</p>
+          <p *ngIf="future?.rocket == rocket?.id">Country: {{rocket?.country}}</p>
+          <p *ngIf="future?.rocket == rocket?.id">Company: {{rocket?.company}}</p>
         </div>
-  </mat-expansion-panel>
-</mat-accordion>
-</div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
 </div>
 
 <!-- Past missions -->

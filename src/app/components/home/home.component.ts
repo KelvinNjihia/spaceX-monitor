@@ -5,7 +5,6 @@ import { Rocket } from './../../models/rocket.model';
 import { SpacexNext } from '../../models/spacex-next.model';
 import { SpacexService } from './../../services/spacex.service';
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -18,14 +17,14 @@ export class HomeComponent implements OnInit {
   rockets$: Observable<Rocket>;
   pastLaunches$: Observable<PastLaunches>;
   futureLaunch$: Observable<FutureLaunch>;
+  public smallPatchUrl: string;
 
   panelOpenState: true;
 
   search = '';
 
   constructor(
-    private spacexService: SpacexService,
-    private sanitizer: DomSanitizer
+    private spacexService: SpacexService
     ) { }
 
   ngOnInit(): void {
@@ -38,6 +37,9 @@ export class HomeComponent implements OnInit {
 
     // invoke methd with async
     this.showFutureLaunches();
+
+    // get the image
+    this.spacexService.getNextLaunch().subscribe(x => this.smallPatchUrl = x.links?.patch?.small);
   }
 
   showFutureLaunches(): void {
@@ -50,9 +52,5 @@ export class HomeComponent implements OnInit {
 
   getRockets(): void {
     this.rockets$ = this.spacexService.getAllRockets();
-  }
-
-  sanitizeImageUrl(imageUrl: string): SafeUrl {
-    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
   }
 }
