@@ -1,3 +1,4 @@
+import { SingleViewComponent } from './components/single-view/single-view.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,7 +20,8 @@ import { HeaderComponent } from './components/header/header.component';
     AppComponent,
     HomeComponent,
     SearchComponent,
-    HeaderComponent
+    HeaderComponent,
+    SingleViewComponent
   ],
   imports: [
     BrowserModule,

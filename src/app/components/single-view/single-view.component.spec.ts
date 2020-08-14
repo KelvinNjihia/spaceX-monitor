@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SingleComponent } from './single.component';
+import { SingleViewComponent } from './single-view.component';
 
-describe('SingleComponent', () => {
-  let component: SingleComponent;
-  let fixture: ComponentFixture<SingleComponent>;
+describe('SingleViewComponent', () => {
+  let component: SingleViewComponent;
+  let fixture: ComponentFixture<SingleViewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SingleComponent ]
+      declarations: [ SingleViewComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SingleComponent);
+    fixture = TestBed.createComponent(SingleViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
