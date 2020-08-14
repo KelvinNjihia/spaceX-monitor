@@ -1,4 +1,3 @@
-import { SingleViewComponent } from './components/single-view/single-view.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MaterialModule } from './material.module';
 import { SearchComponent } from './components/search/search.component';
 import { HeaderComponent } from './components/header/header.component';
+import { SingleViewComponent } from './components/single-view/single-view.component';
 
 @NgModule({
   declarations: [
