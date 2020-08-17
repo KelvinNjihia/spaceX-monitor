@@ -14,6 +14,7 @@ import { MaterialModule } from './material.module';
 import { SearchComponent } from './components/search/search.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SingleViewComponent } from './components/single-view/single-view.component';
+import { PastComponent } from './components/past/past.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SingleViewComponent } from './components/single-view/single-view.compon
     HomeComponent,
     SearchComponent,
     HeaderComponent,
-    SingleViewComponent
+    SingleViewComponent,
+    PastComponent
   ],
   imports: [
     BrowserModule,
